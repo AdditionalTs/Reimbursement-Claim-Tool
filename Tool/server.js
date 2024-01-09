@@ -4,6 +4,14 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const bcrypt = require('bcrypt');
+
+// Inside the '/register' route
+const saltRounds = 10;
+const hashedPassword = await bcrypt.hash(password, saltRounds);
+const user = new User({ username, password: hashedPassword });
+});
+
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -34,4 +42,3 @@ app.post('/login', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
