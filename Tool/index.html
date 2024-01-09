@@ -4,47 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reimbursement Tool</title>
+  <title>Reimbursement Portal</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container-fluid bg-dark text-light p-5">
     <div class="row justify-content-center">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h2 class="text-center mb-4">Reimbursement Portal</h2>
-        <form>
+
+        <!-- Login Form -->
+        <form action="/login" method="post" class="mb-4">
           <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+            <label for="loginUsername">Username</label>
+            <input type="text" class="form-control" id="loginUsername" name="username" placeholder="Enter your username" required>
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="rememberMe">
-            <label class="form-check-label" for="rememberMe">Remember Me</label>
-          </div>
-          <div class="form-group mt-3">
-            <a href="#" class="forgot-password">Forgot Password?</a>
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Enter your password" required>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Login</button>
-          <div class="container-fluid bg-dark text-light p-5">
-          <div class="row justify-content-center">
-    <div class="col-md-4">
-      <h2 class="text-center mb-4">Reimbursement Portal</h2>
-      <!-- Login Form -->
-      <form action="/login" method="post">
-        <!-- ... (previous form elements) -->
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-      </form>
+        </form>
 
-      <!-- Registration Form -->
-      <form action="/register" method="post">
-        <!-- ... (previous form elements) -->
-        <button type="submit" class="btn btn-success btn-block mt-3">Register</button>
-      
+        <!-- Registration Form -->
+        <form action="/register" method="post">
+          <div class="form-group">
+            <label for="registerUsername">Username</label>
+            <input type="text" class="form-control" id="registerUsername" name="username" placeholder="Choose a username" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" class="form-control" id="registerPassword" name="password" placeholder="Choose a password" required>
+          </div>
+          <button type="submit" class="btn btn-success btn-block">Register</button>
         </form>
       </div>
     </div>
