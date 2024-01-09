@@ -42,3 +42,33 @@ app.post('/login', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+
+
+const passport = require('passport');
+const session = require('express-session');
+const initializePassport = require('./passport-config');
+
+initializePassport(passport);
+
+app.use(session({ secret: 'your-secret-key', resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}));
+
+app.get('/', checkAuthenticated, (req, res) => {
+  res.send('Welcome to the Reimbursement Tool Backend!');
+});
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  res.redirect('/login');
+}
